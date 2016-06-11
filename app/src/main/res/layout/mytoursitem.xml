@@ -10,22 +10,23 @@
     >
 
         <ImageView
+            android:background="@color/colorPrimaryDark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView" />
+            android:id="@+id/mytours_activityImage" />
 
         <TextView
             android:layout_width="118dp"
             android:layout_height="wrap_content"
             android:text="Guide Name"
-            android:id="@+id/textView3"
+            android:id="@+id/mytours_guideName"
             android:layout_weight="0.04" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tour Description"
-            android:id="@+id/textView4" />
+            android:id="@+id/mytours_tourDescription" />
 </view>
 
 </LinearLayout>
