@@ -4,10 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-<<<<<<< HEAD
-=======
-import android.util.Log;
->>>>>>> b23b9029d68dfc68a9d13b736dfb92fbd836424e
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;

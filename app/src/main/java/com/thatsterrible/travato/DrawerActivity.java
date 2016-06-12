@@ -7,7 +7,9 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 public class DrawerActivity extends AppCompatActivity {
@@ -16,6 +18,7 @@ public class DrawerActivity extends AppCompatActivity {
     public FrameLayout frameLayout;
     private Toolbar toolbar;
     ActionBarDrawerToggle mDrawerToggle;
+
 
     @Override
     public void setContentView(int layoutResID) {
