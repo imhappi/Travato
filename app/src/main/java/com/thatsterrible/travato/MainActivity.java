@@ -21,15 +21,13 @@ public class MainActivity extends AppCompatActivity {
 
         FacebookSdk.sdkInitialize(getApplicationContext());
 
-
-
+        Intent intent;
         if (isLoggedIn()) {
-            Intent intent = new Intent(this, MyToursActivity.class);
-            startActivity(intent);
+            intent = new Intent(this, ChooseLocalTour.class);
         } else {
-
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
+            intent = new Intent(this, LoginActivity.class);
         }
+
+        startActivity(intent);
     }
 }
