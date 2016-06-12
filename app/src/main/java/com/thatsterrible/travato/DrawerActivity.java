@@ -14,6 +14,8 @@ import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 
+import com.facebook.login.LoginManager;
+
 public class DrawerActivity extends AppCompatActivity {
 
     public CustomDrawerLayout fullLayout;
@@ -107,7 +109,9 @@ public class DrawerActivity extends AppCompatActivity {
                 } else if (optionSelected.equals("Settings")) {
                     // todo when settings is finished
                 } else if (optionSelected.equals("Logout")) {
-
+                    LoginManager.getInstance().logOut();
+                    intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(intent);
                 }
             }
         });
