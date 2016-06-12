@@ -8,12 +8,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.widget.TextView;
 
+import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 
 /**
@@ -26,10 +40,23 @@ public class LoginActivity extends AppCompatActivity {
 
     private CallbackManager callbackManager;
 
+    private final OkHttpClient client = new OkHttpClient();
+
+    public boolean isLoggedIn() {
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        return accessToken != null;
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
+
+        if (isLoggedIn()) {
+            Intent intent = new Intent(this, MyToursActivity.class);
+            startActivity(intent);
+            return;
+        }
 
         callbackManager = CallbackManager.Factory.create();
 
@@ -47,6 +74,41 @@ public class LoginActivity extends AppCompatActivity {
                                 "Auth Token: "
                                 + loginResult.getAccessToken().getToken()
                 );
+
+
+                JSONObject json = new JSONObject();
+                try {
+                    json.put("userid", loginResult.getAccessToken().getUserId());
+                    json.put("auth", loginResult.getAccessToken().getToken());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    e.getMessage();
+
+                    info.setText("JSON error");
+                }
+
+                RequestBody body = RequestBody.create(MediaType.parse("JSON"), json.toString());
+
+                Request request = new Request.Builder()
+                        .url("http://travato.ngrok.io/fb/login")
+                        .post(body)
+                        .build();
+
+                client.newCall(request).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    @Override
+                    public void onResponse(Call call, final Response response) throws IOException {
+                        System.out.println(response.code());
+                    }
+                });
+
+                // Redirect
+                Intent intent = new Intent(getApplicationContext(), MyToursActivity.class);
+                startActivity(intent);
             }
 
             @Override
