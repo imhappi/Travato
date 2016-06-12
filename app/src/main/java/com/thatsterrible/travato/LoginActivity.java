@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.facebook.AccessToken;
@@ -49,21 +51,21 @@ public class LoginActivity extends AppCompatActivity {
         callbackManager = CallbackManager.Factory.create();
 
         setContentView(R.layout.activity_login);
+
+        final Button button = (Button) findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ChooseLocalTour.class);
+                startActivity(intent);
+            }
+        });
+
         info = (TextView)findViewById(R.id.info);
         loginButton = (LoginButton)findViewById(R.id.login_button);
 
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                info.setText(
-                        "User ID: "
-                                + loginResult.getAccessToken().getUserId()
-                                + "\n" +
-                                "Auth Token: "
-                                + loginResult.getAccessToken().getToken()
-                );
-
-
                 JSONObject json = new JSONObject();
                 try {
                     json.put("userid", loginResult.getAccessToken().getUserId());
@@ -95,7 +97,7 @@ public class LoginActivity extends AppCompatActivity {
                 });
 
                 // Redirect
-                Intent intent = new Intent(getApplicationContext(), MyToursActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ChooseLocalTour.class);
                 startActivity(intent);
             }
 

@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -35,31 +37,12 @@ public class MyTourDetails extends AppCompatActivity{
         mActivityText = (TextView) findViewById(R.id.tourDetails_activityName);
         mBookButton = (Button) findViewById(R.id.tourDetails_bookButton);
 
-        mBookButton.setOnClickListener(){
-            @Override
+        mBookButton.setOnClickListener(
+                new View.OnClickListener(){
+                    @Override
                     public void onClick(View v){
-                log.d("Naomi", "Smells");
-            }
-        }
-
-
-    }
-
-    public String getGuideName() {
-
-        return mGuideName;
-    }
-
-    public String getImgurl() {
-
-        return mImgurl;
-    }
-
-    public String getActivityName() {
-        return mActivityName;
-    }
-
-    public String getmActivityDescription(){
-        return mActivityDescription;
+                        Log.d("Naomi", "Smells");
+                    }
+        });
     }
 }
