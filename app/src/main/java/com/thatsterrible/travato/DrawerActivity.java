@@ -12,18 +12,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 
 public class DrawerActivity extends AppCompatActivity {
 
-//    public DrawerLayout fullLayout;
     public CustomDrawerLayout fullLayout;
     public FrameLayout frameLayout;
     private Toolbar toolbar;
     ActionBarDrawerToggle mDrawerToggle;
 
-    private String[] mPlanetTitles;
-    private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ArrayAdapter<String> mAdapter;
 
@@ -33,7 +29,6 @@ public class DrawerActivity extends AppCompatActivity {
 
         fullLayout = (CustomDrawerLayout) getLayoutInflater().inflate(R.layout.activity_drawer,null);
 
-//        fullLayout = (DrawerLayout) getLayoutInflater().inflate(R.layout.activity_drawer, null);
         frameLayout = (FrameLayout) fullLayout.findViewById(R.id.activity_content);
 
         getLayoutInflater().inflate(layoutResID, frameLayout, true);
@@ -92,14 +87,19 @@ public class DrawerActivity extends AppCompatActivity {
     }
 
     private void addDrawerItems() {
-        String[] osArray = { "My Tours","Search for Tours","Settings","Logout" };
-        mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, osArray);
+        // for the interest of time, hard coding as strings
+
+        String[] menuItems = { "My Tours","Search for Tours","Settings","Logout" };
+        mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, menuItems);
         mDrawerList.setAdapter(mAdapter);
 
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.d("naomi","item clicked is " + mAdapter.getItem(position));
+                String optionSelected = mAdapter.getItem(position);
+                if (optionSelected.equals("My Tours")) {
+
+                }
             }
         });
     }
