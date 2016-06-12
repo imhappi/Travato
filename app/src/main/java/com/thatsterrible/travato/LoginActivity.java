@@ -89,7 +89,10 @@ public class LoginActivity extends AppCompatActivity {
                 });
 
                 // Redirect
-                Intent intent = new Intent(getApplicationContext(), ChooseLocalTour.class);
+                // todo: if first time logging in, inflate fragment that chooses whether or not user is a traveller or local. use sharedprefs to remember maybe?
+//                getFragmentManager().beginTransaction().add(new ChooseTravellerOrLocalFragment(), "choose_traveller_or_local").commit();
+                // otherwise, get information from shared prefs and redirect accordingly
+                Intent intent = new Intent(getApplicationContext(), MyToursActivity.class);
                 startActivity(intent);
             }
 

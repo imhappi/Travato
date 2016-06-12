@@ -43,16 +43,14 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".HamburgerActivity"
-            android:label="@string/title_activity_hamburger"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".BaseActivity"
-            android:label="@string/title_activity_base"
-            android:theme="@style/AppTheme.NoActionBar" />
 
         <activity android:name=".MyTourDetails">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ProfileActivity">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>

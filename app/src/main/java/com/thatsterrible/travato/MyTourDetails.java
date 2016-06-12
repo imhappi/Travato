@@ -2,8 +2,6 @@ package com.thatsterrible.travato;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -12,43 +10,56 @@ import android.widget.TextView;
 /**
  * Created by pandominator on 11/06/16.
  */
-public class MyTourDetails extends AppCompatActivity{
+public class MyTourDetails extends DrawerActivity {
 
     ImageView mTourImage;
     TextView mGuideName;
 
-    TextView mActivityText;
+    TextView mTourTitle;
     TextView mDescriptionText;
     Button mBookButton;
+    LocalTourItem mLocalTourItem;
 
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tour_details);
 
         Intent intent = getIntent();
-        String guideName = intent.getStringExtra("alexisthebest"); // alex you can't have the same key name for all these extras :I
-        String imgUrl = intent.getStringExtra("alexisthebest");
-        String tourName = intent.getStringExtra("alexisthebest");
-        String tourDescription = intent.getStringExtra("alexisthebest");
+        mLocalTourItem = (LocalTourItem) intent.getSerializableExtra("local_tour_item");
 
-        mTourImage = (ImageView) findViewById(R.id.local_tour_image);
-        this.mGuideName = (TextView) findViewById(R.id.tourDetails_tourGuide);
+        mTourImage = (ImageView) findViewById(R.id.local_tour_image); //todo: img url
+        mGuideName = (TextView) findViewById(R.id.tourDetails_tourGuide);
         mDescriptionText = (TextView) findViewById(R.id.tourDetails_activityDescription);
-        mActivityText = (TextView) findViewById(R.id.tourDetails_activityName);
+        mTourTitle = (TextView) findViewById(R.id.tourDetails_activityName);
         mBookButton = (Button) findViewById(R.id.tourDetails_bookButton);
+
+        setupViews();
 
         mBookButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                // todo make call to backend
             }
         });
 
+        mGuideName.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mGuideName.getContext(), ProfileActivity.class);
+                intent.putExtra("guide_name", mLocalTourItem.getGuideName());
+                // may have to put id?
+            }
+        });
     }
 
-    public void setGuideName(String guideName) {
-        mGuideName.setText(guideName);
+    private void setupViews() {
+        if (mLocalTourItem != null) {
+            //todo: img url
+            mGuideName.setText(mLocalTourItem.getGuideName());
+            mDescriptionText.setText(mLocalTourItem.getDescription());
+            mTourTitle.setText(mLocalTourItem.getTourTitle());
+        }
     }
-
-
 }

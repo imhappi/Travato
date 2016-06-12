@@ -2,7 +2,6 @@ package com.thatsterrible.travato;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -23,16 +22,18 @@ import okhttp3.Response;
 /**
  * Created by pandominator on 11/06/16.
  */
-public class MyToursActivity extends AppCompatActivity{
+public class MyToursActivity extends DrawerActivity {
 
     private RecyclerView mMyRecyclerView;
     private LocalToursAdapter mMyToursAdapter;
-    private List<LocalActivityItem> mMyToursList;
+    private List<LocalTourItem> mMyToursList;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_mytours);
 
-        mMyRecyclerView = new RecyclerView(this);
+
+        mMyRecyclerView = (RecyclerView) findViewById(R.id.mytours_recycler_view);
         mMyRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
         mMyToursAdapter = new LocalToursAdapter();
@@ -90,8 +91,8 @@ public class MyToursActivity extends AppCompatActivity{
             String startDate = object.getString("start_time");
             String endDate = object.getString("end_time");
 
-            LocalActivityItem item =
-                    new LocalActivityItem(imgurl, tourTitle, guideName, cityName,
+            LocalTourItem item =
+                    new LocalTourItem(imgurl, tourTitle, guideName, cityName,
                             description, price, startDate, endDate, capacity);
 
             mMyToursList.add(item);

@@ -1,9 +1,11 @@
 package com.thatsterrible.travato;
 
+import java.io.Serializable;
+
 /**
  * Created by naomikoo on 16-06-11.
  */
-public class LocalActivityItem {
+public class LocalTourItem implements Serializable {
     String mImgurl;
     String mTourTitle;
     String mGuideName;
@@ -15,9 +17,9 @@ public class LocalActivityItem {
     String mCapacity;
 
 
-    public LocalActivityItem(String imgurl, String tourTitle, String guideName, String cityName,
-                             String description, String price, String startDate, String endDate,
-                             String capacity) {
+    public LocalTourItem(String imgurl, String tourTitle, String guideName, String cityName,
+                         String description, String price, String startDate, String endDate,
+                         String capacity) {
         mImgurl = imgurl;
         mTourTitle = tourTitle;
         mGuideName = guideName;
@@ -60,4 +62,6 @@ public class LocalActivityItem {
     public String getCapacity() {
         return mCapacity + " spot(s) filled";
     }
+
+
 }

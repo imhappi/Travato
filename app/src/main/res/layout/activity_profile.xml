@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/profile_picture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/profile_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TEST DATA"
+                android:textSize="24dp" />
+
+            <TextView
+                android:id="@+id/profile_age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MOCK 26 years old"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/profile_nationality"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MOCK nationality"
+                android:textSize="18dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="\n\nMOCK description I like long walks on the beach"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

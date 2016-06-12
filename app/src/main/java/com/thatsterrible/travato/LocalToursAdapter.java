@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class LocalToursAdapter extends RecyclerView.Adapter<LocalTourViewHolder> {
 
-    List<LocalActivityItem> mLocalTourItems;
+    List<LocalTourItem> mLocalTourItems;
 
     public LocalToursAdapter() {
         mLocalTourItems = new ArrayList<>();
@@ -29,13 +29,7 @@ public class LocalToursAdapter extends RecyclerView.Adapter<LocalTourViewHolder>
 
     @Override
     public void onBindViewHolder(LocalTourViewHolder holder, int position) {
-        LocalActivityItem item = mLocalTourItems.get(position);
-        holder.setGuideName(item.getGuideName());
-        holder.setTourImage(item.getImgurl());
-        holder.setTourTitle(item.getTourTitle());
-        holder.setPrice(item.getPrice());
-        holder.setCapacity(item.getCapacity());
-        holder.setDate(item.getDate());
+        holder.setFields(mLocalTourItems.get(position));
     }
 
     @Override
@@ -43,12 +37,12 @@ public class LocalToursAdapter extends RecyclerView.Adapter<LocalTourViewHolder>
         return mLocalTourItems.size();
     }
 
-    public void addLocalTour(LocalActivityItem item) {
+    public void addLocalTour(LocalTourItem item) {
         mLocalTourItems.add(item);
         notifyDataSetChanged();
     }
 
-    public void setLocalToursList(List<LocalActivityItem> itemsList) {
+    public void setLocalToursList(List<LocalTourItem> itemsList) {
         mLocalTourItems = itemsList;
         notifyDataSetChanged();
     }

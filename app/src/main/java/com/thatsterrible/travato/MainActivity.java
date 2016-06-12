@@ -32,7 +32,10 @@ public class MainActivity extends AppCompatActivity {
                             intent = new Intent(getApplicationContext(), LoginActivity.class);
                         }
 
+                        intent = new Intent(getApplicationContext(), ProfileActivity.class);
+
                         startActivity(intent);
+                        finish();
                     }
                 });
     }

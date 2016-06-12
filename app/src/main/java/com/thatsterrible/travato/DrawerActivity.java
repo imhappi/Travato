@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -23,6 +24,7 @@ public class DrawerActivity extends AppCompatActivity {
 
     private ListView mDrawerList;
     private ArrayAdapter<String> mAdapter;
+    private boolean drawerOpened;
 
 
     @Override
@@ -44,19 +46,21 @@ public class DrawerActivity extends AppCompatActivity {
 
         final ActionBar actionBar = getSupportActionBar();
 
+
         CustomDrawerLayout drawerLayout = (CustomDrawerLayout) findViewById(R.id.drawer_layout);
 
         if (actionBar != null) {
+
             actionBar.setDisplayHomeAsUpEnabled(true);
             mDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, 0, 0) {
 
                 public void onDrawerClosed(View view) {
-                    //drawerOpened = false;
+                    drawerOpened = false;
                 }
 
                 public void onDrawerOpened(View drawerView) {
                     supportInvalidateOptionsMenu();
-                    //drawerOpened = true;
+                    drawerOpened = true;
                 }
             };
             mDrawerToggle.setDrawerIndicatorEnabled(true);
@@ -67,8 +71,6 @@ public class DrawerActivity extends AppCompatActivity {
 
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
         addDrawerItems();
-        //Your drawer content...
-
     }
 
     @Override
@@ -98,18 +100,29 @@ public class DrawerActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String optionSelected = mAdapter.getItem(position);
-                Intent intent;
+                Intent intent = new Intent(view.getContext(),MyToursActivity.class);
 
-                if (optionSelected.equals("My Tours")) {
-                    intent = new Intent(view.getContext(),MyToursActivity.class);
-                } else if (optionSelected.equals("Search for Tours")) {
+                if (optionSelected.equals("Search for Tours")) {
                     // todo when alex finishes search page
                 } else if (optionSelected.equals("Settings")) {
                     // todo when settings is finished
                 } else if (optionSelected.equals("Logout")) {
 
                 }
+
+                if (intent != null) {
+                    startActivity(intent);
+                }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawerOpened) {
+            fullLayout.closeDrawer(Gravity.LEFT);
+        } else {
+            super.onBackPressed();
+        }
     }
 }

@@ -1,13 +1,10 @@
 package com.thatsterrible.travato;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,7 +26,7 @@ public class ChooseLocalTour extends DrawerActivity {
 
     private RecyclerView mRecyclerView;
     private LocalToursAdapter mLocalToursAdapter;
-    private List<LocalActivityItem> mLocalToursList;
+    private List<LocalTourItem> mLocalToursList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +41,9 @@ public class ChooseLocalTour extends DrawerActivity {
 
 //        getData();
 
-        mLocalToursAdapter.addLocalTour(new LocalActivityItem(null,"Biking with Ru", "Ru Li", "Waterloo", "biking :D", "5000","Aug 26", "Aug 27","1/2"));
-        mLocalToursAdapter.addLocalTour(new LocalActivityItem(null,"Frolicking with Ru", "Ru Li", "Waterloo", "biking :D", "8000","Aug 26", "Aug 27","1/20"));
+        // test data
+        mLocalToursAdapter.addLocalTour(new LocalTourItem(null,"Biking with Ru", "Ru Li", "Waterloo", "biking :D", "5000","Aug 26", "Aug 27","1/2"));
+        mLocalToursAdapter.addLocalTour(new LocalTourItem(null,"Frolicking with Ru", "Ru Li", "Waterloo", "biking :D", "8000","Aug 26", "Aug 27","1/20"));
 
     }
 
@@ -96,8 +94,8 @@ public class ChooseLocalTour extends DrawerActivity {
             String startDate = object.getString("start_time");
             String endDate = object.getString("end_time");
 
-            LocalActivityItem item =
-                    new LocalActivityItem(imgurl, tourTitle, guideName, cityName,
+            LocalTourItem item =
+                    new LocalTourItem(imgurl, tourTitle, guideName, cityName,
                             description, price, startDate, endDate, capacity);
 
             mLocalToursList.add(item);

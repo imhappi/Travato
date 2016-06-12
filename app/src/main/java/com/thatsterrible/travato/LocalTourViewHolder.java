@@ -1,5 +1,6 @@
 package com.thatsterrible.travato;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
@@ -23,6 +24,9 @@ public class LocalTourViewHolder extends RecyclerView.ViewHolder {
     TextView mDate;
 
     View mItemContainer;
+
+    LocalTourItem mLocalTourItem;
+
     public LocalTourViewHolder(View itemView) {
         super(itemView);
 
@@ -38,41 +42,26 @@ public class LocalTourViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View v) {
                 Log.d("Naomi","LocalTourViewHolder on click");
+                Intent intent = new Intent(mItemContainer.getContext(), MyTourDetails.class);
+                if (mLocalTourItem != null) {
+                    intent.putExtra("local_tour_item", mLocalTourItem);
+                }
 
             }
         });
     }
 
-    public void setGuideName(String guideName) {
-        mGuideName.setText(guideName);
-    }
 
-    public void setTourTitle(String tourTitle) {
-        mTourTitle.setText(tourTitle);
-    }
-
-    public void setTourImage(String tourImage) {
-        //TODO
-    }
-
-//    public void setCityName(String cityName) {
-//        mCityName.setText(cityName);
-//    }
-
-    public void setPrice(String price) {
-        mPrice.setText(price);
-    }
-
-    public void setDescription(String description) {
-        mDescription.setText(description);
-    }
-
-    public void setCapacity(String capacity) {
-        mCapacity.setText(capacity);
-    }
-
-    public void setDate(String date) {
-        mDate.setText(date);
+    public void setFields(LocalTourItem item) {
+        mLocalTourItem = item;
+        mPrice.setText(item.getPrice());
+        mDescription.setText(item.getDescription());
+        mCapacity.setText(item.getCapacity());
+        mDate.setText(item.getDate());
+        mCityName.setText(item.getCityName());
+        mTourTitle.setText(item.getTourTitle());
+        mGuideName.setText(item.getGuideName());
+        // todo set tour image using library like picasso or glide
     }
 
 
