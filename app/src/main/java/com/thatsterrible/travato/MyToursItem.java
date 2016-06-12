@@ -6,12 +6,12 @@ package com.thatsterrible.travato;
 public class MyToursItem {
     String mImgurl;
     String mGuideName;
-    String mTourDescription;
+    String mActivityName;
 
-    public MyToursItem(String imgurl, String guideName, String tourDescription){
+    public MyToursItem(String imgurl, String guideName, String activityName){
         mImgurl = imgurl;
         mGuideName = guideName;
-        mTourDescription = tourDescription;
+        mActivityName = activityName;
     }
 
     public String getGuideName() {
@@ -22,7 +22,7 @@ public class MyToursItem {
         return mImgurl;
     }
 
-    public String getTourDescription() {
-        return mTourDescription;
+    public String getActivityName() {
+        return mActivityName;
     }
 }

@@ -42,22 +42,10 @@ public class LoginActivity extends AppCompatActivity {
 
     private final OkHttpClient client = new OkHttpClient();
 
-    public boolean isLoggedIn() {
-        AccessToken accessToken = AccessToken.getCurrentAccessToken();
-        return accessToken != null;
-    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FacebookSdk.sdkInitialize(getApplicationContext());
-
-        if (isLoggedIn()) {
-            Intent intent = new Intent(this, MyToursActivity.class);
-            startActivity(intent);
-            return;
-        }
-
         callbackManager = CallbackManager.Factory.create();
 
         setContentView(R.layout.activity_login);
