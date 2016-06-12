@@ -1,5 +1,6 @@
 package com.thatsterrible.travato;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -97,7 +98,15 @@ public class DrawerActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String optionSelected = mAdapter.getItem(position);
+                Intent intent;
+
                 if (optionSelected.equals("My Tours")) {
+                    intent = new Intent(view.getContext(),MyToursActivity.class);
+                } else if (optionSelected.equals("Search for Tours")) {
+                    // todo when alex finishes search page
+                } else if (optionSelected.equals("Settings")) {
+                    // todo when settings is finished
+                } else if (optionSelected.equals("Logout")) {
 
                 }
             }
