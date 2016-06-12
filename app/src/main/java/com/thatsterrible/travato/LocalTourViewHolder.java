@@ -32,12 +32,13 @@ public class LocalTourViewHolder extends RecyclerView.ViewHolder {
         mPrice = (TextView) itemView.findViewById(R.id.local_tours_price);
         mCapacity = (TextView) itemView.findViewById(R.id.local_tours_capacity);
         mDate = (TextView) itemView.findViewById(R.id.local_tours_date);
-        mItemContainer = (View) itemView.findViewById(R.id.local_tour_item_container);
+        mItemContainer = itemView.findViewById(R.id.local_tour_item_container);
 
         mItemContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d("Naomi","LocalTourViewHolder on click");
+
             }
         });
     }
