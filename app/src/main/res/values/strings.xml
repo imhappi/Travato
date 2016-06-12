@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">Travato</string>
     <string name="facebook_app_id">249404112098605</string>
+    <string name="title_activity_hamburger">HamburgerActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_base">BaseActivity</string>
 </resources>

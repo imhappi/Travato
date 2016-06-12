@@ -5,6 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,7 +25,7 @@ import okhttp3.Response;
 /**
  * Created by naomikoo on 16-06-11.
  */
-public class ChooseLocalTour extends AppCompatActivity {
+public class ChooseLocalTour extends DrawerActivity {
 
     private RecyclerView mRecyclerView;
     private LocalToursAdapter mLocalToursAdapter;
@@ -39,7 +42,6 @@ public class ChooseLocalTour extends AppCompatActivity {
         mLocalToursAdapter = new LocalToursAdapter();
         mRecyclerView.setAdapter(mLocalToursAdapter);
 
-        Log.d("Naomi","wah");
 //        getData();
 
         mLocalToursAdapter.addLocalTour(new LocalActivityItem(null,"Biking with Ru", "Ru Li", "Waterloo", "biking :D", "5000","Aug 26", "Aug 27","1/2"));
@@ -51,7 +53,7 @@ public class ChooseLocalTour extends AppCompatActivity {
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
-                .url("http://publicobject.com/helloworld.txt")
+                .url("STUFFFFF")
                 .build();
 
         client.newCall(request).enqueue(new Callback() {
@@ -103,5 +105,16 @@ public class ChooseLocalTour extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 }
