@@ -51,6 +51,4 @@ public class MyTourDetails extends AppCompatActivity{
     public void setGuideName(String guideName) {
         mGuideName.setText(guideName);
     }
-
-
 }
