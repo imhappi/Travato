@@ -17,7 +17,7 @@
             android:background="@color/colorPrimaryDark" />
 
         <TextView
-            android:id="@+id/local_tours_title"
+            android:id="@+id/local_tour_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="5dp"
