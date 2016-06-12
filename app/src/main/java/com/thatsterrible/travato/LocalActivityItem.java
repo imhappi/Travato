@@ -58,6 +58,6 @@ public class LocalActivityItem {
     }
 
     public String getCapacity() {
-        return mCapacity;
+        return mCapacity + " spot(s) filled";
     }
 }

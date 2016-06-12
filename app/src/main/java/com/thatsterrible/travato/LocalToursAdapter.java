@@ -33,9 +33,7 @@ public class LocalToursAdapter extends RecyclerView.Adapter<LocalTourViewHolder>
         holder.setGuideName(item.getGuideName());
         holder.setTourImage(item.getImgurl());
         holder.setTourTitle(item.getTourTitle());
-        holder.setCityName(item.getCityName());
         holder.setPrice(item.getPrice());
-        holder.setDescription(item.getDescription());
         holder.setCapacity(item.getCapacity());
         holder.setDate(item.getDate());
     }

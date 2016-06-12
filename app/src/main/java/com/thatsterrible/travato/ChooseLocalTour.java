@@ -31,17 +31,19 @@ public class ChooseLocalTour extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_choose_local);
 
-        mRecyclerView = new RecyclerView(this);
+        mRecyclerView = (RecyclerView) findViewById(R.id.local_activities_recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
         mLocalToursAdapter = new LocalToursAdapter();
         mRecyclerView.setAdapter(mLocalToursAdapter);
 
+        Log.d("Naomi","wah");
 //        getData();
 
-        setContentView(R.layout.activity_choose_local);
         mLocalToursAdapter.addLocalTour(new LocalActivityItem(null,"Biking with Ru", "Ru Li", "Waterloo", "biking :D", "5000","Aug 26", "Aug 27","1/2"));
+        mLocalToursAdapter.addLocalTour(new LocalActivityItem(null,"Frolicking with Ru", "Ru Li", "Waterloo", "biking :D", "8000","Aug 26", "Aug 27","1/20"));
 
     }
 

@@ -1,6 +1,7 @@
 package com.thatsterrible.travato;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,6 +22,7 @@ public class LocalTourViewHolder extends RecyclerView.ViewHolder {
     TextView mCapacity;
     TextView mDate;
 
+    View mItemContainer;
     public LocalTourViewHolder(View itemView) {
         super(itemView);
 
@@ -30,6 +32,14 @@ public class LocalTourViewHolder extends RecyclerView.ViewHolder {
         mPrice = (TextView) itemView.findViewById(R.id.local_tours_price);
         mCapacity = (TextView) itemView.findViewById(R.id.local_tours_capacity);
         mDate = (TextView) itemView.findViewById(R.id.local_tours_date);
+        mItemContainer = (View) itemView.findViewById(R.id.local_tour_item_container);
+
+        mItemContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("Naomi","LocalTourViewHolder on click");
+            }
+        });
     }
 
     public void setGuideName(String guideName) {
@@ -44,9 +54,9 @@ public class LocalTourViewHolder extends RecyclerView.ViewHolder {
         //TODO
     }
 
-    public void setCityName(String cityName) {
-        mCityName.setText(cityName);
-    }
+//    public void setCityName(String cityName) {
+//        mCityName.setText(cityName);
+//    }
 
     public void setPrice(String price) {
         mPrice.setText(price);
