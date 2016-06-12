@@ -6,7 +6,9 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ListView;
@@ -14,16 +16,24 @@ import android.widget.RelativeLayout;
 
 public class DrawerActivity extends AppCompatActivity {
 
-    public DrawerLayout fullLayout;
+//    public DrawerLayout fullLayout;
+    public CustomDrawerLayout fullLayout;
     public FrameLayout frameLayout;
     private Toolbar toolbar;
     ActionBarDrawerToggle mDrawerToggle;
+
+    private String[] mPlanetTitles;
+    private DrawerLayout mDrawerLayout;
+    private ListView mDrawerList;
+    private ArrayAdapter<String> mAdapter;
 
 
     @Override
     public void setContentView(int layoutResID) {
 
-        fullLayout = (DrawerLayout) getLayoutInflater().inflate(R.layout.activity_drawer, null);
+        fullLayout = (CustomDrawerLayout) getLayoutInflater().inflate(R.layout.activity_drawer,null);
+
+//        fullLayout = (DrawerLayout) getLayoutInflater().inflate(R.layout.activity_drawer, null);
         frameLayout = (FrameLayout) fullLayout.findViewById(R.id.activity_content);
 
         getLayoutInflater().inflate(layoutResID, frameLayout, true);
@@ -59,6 +69,8 @@ public class DrawerActivity extends AppCompatActivity {
         }
 
 
+        mDrawerList = (ListView) findViewById(R.id.left_drawer);
+        addDrawerItems();
         //Your drawer content...
 
     }
@@ -77,5 +89,18 @@ public class DrawerActivity extends AppCompatActivity {
         mDrawerToggle.onOptionsItemSelected(item);
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void addDrawerItems() {
+        String[] osArray = { "My Tours","Search for Tours","Settings","Logout" };
+        mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, osArray);
+        mDrawerList.setAdapter(mAdapter);
+
+        mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d("naomi","item clicked is " + mAdapter.getItem(position));
+            }
+        });
     }
 }

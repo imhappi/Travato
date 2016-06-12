@@ -27,7 +27,7 @@ public class LocalTourViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
 
         mTourImage = (ImageView) itemView.findViewById(R.id.local_tour_image);
-        mTourTitle = (TextView) itemView.findViewById(R.id.local_tours_title);
+        mTourTitle = (TextView) itemView.findViewById(R.id.local_tour_title);
         mGuideName = (TextView) itemView.findViewById(R.id.local_tours_guide_name);
         mPrice = (TextView) itemView.findViewById(R.id.local_tours_price);
         mCapacity = (TextView) itemView.findViewById(R.id.local_tours_capacity);
