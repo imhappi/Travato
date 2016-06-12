@@ -19,15 +19,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        FacebookSdk.sdkInitialize(getApplicationContext());
+        FacebookSdk.sdkInitialize(getApplicationContext(),new FacebookSdk.InitializeCallback() {
+                    @Override
+                    public void onInitialized() {
+                        Intent intent;
 
-        Intent intent;
-        if (isLoggedIn()) {
-            intent = new Intent(this, ChooseLocalTour.class);
-        } else {
-            intent = new Intent(this, LoginActivity.class);
-        }
+                        if (isLoggedIn()) {
+                            intent = new Intent(getApplicationContext(), ChooseLocalTour.class);
+                        } else {
+                            intent = new Intent(getApplicationContext(), LoginActivity.class);
+                        }
 
-        startActivity(intent);
+                        startActivity(intent);
+                    }
+                });
     }
 }
